@@ -14,5 +14,4 @@ jobs:
           ServiceConnection: "SERVICECONNECTION"
           ResourceGroupName: "delete_me"
           StorageAccountName: "delete101"
-        env: # Github Secret stored as Environment variable
-          SERVICECONNECTION: ${{ secrets.AZURE_CREDENTIALS}}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
