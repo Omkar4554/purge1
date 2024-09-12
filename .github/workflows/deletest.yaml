@@ -1,17 +1,20 @@
-name: Remove-Azure-Storage-Account
+name: Delete Storage Account
 
-on: [push]
+on:
+  workflow_dispatch:
 
 jobs:
-  deploy:
-    name: Remove
+  delete-storage-account:
     runs-on: ubuntu-latest
     steps:
-      - name: Remove Azure Storage Account
-        uses: stefanstranger/azure-storageaccount-action@v1
+      - uses: actions/checkout@v3
+      - name: Configure Storage Account Credentials
+        uses: actions/setup-credentials@v1
         with:
-          action: "removeStorageAccount"
-          ServiceConnection: "SERVICECONNECTION"
-          ResourceGroupName: "delete_me"
-          StorageAccountName: "delete101"
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+         creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Delete Storage Account
+        run: |
+          # Replace with provider-specific commands to delete the storage account
+          # For example, using Azure CLI:
+          az storage account delete --name delete101 --resource-group delete_me
