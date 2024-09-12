@@ -1,0 +1,18 @@
+name: Remove-Azure-Storage-Account
+
+on: [push]
+
+jobs:
+  deploy:
+    name: Remove
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remove Azure Storage Account
+        uses: stefanstranger/azure-storageaccount-action@v1
+        with:
+          action: "removeStorageAccount"
+          ServiceConnection: "SERVICECONNECTION"
+          ResourceGroupName: "delete_me"
+          StorageAccountName: "delete101"
+        env: # Github Secret stored as Environment variable
+          SERVICECONNECTION: ${{ secrets.AZURE_CREDENTIALS}}
