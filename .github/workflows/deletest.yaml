@@ -14,7 +14,7 @@ jobs:
          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Delete Storage Account
-        run: |
+        run: 
           # Replace with provider-specific commands to delete the storage account
           # For example, using Azure CLI:
           az storage account delete --name delete101 --resource-group delete_me
